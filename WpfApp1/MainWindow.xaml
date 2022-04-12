@@ -1,0 +1,79 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Triagle.SOX" Height="450" Width="800" ResizeMode="NoResize" Icon="https://i.pinimg.com/564x/d2/75/ad/d275adb6e04e36e41485cb4cb77a714c.jpg" AllowsTransparency="True" WindowStyle="None"
+        Padding="0">
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#ffff"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#ffff"/>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Border BorderBrush="White" BorderThickness="5" x:Name="mane_border">
+    <Grid>
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="AB" FontSize="60" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontFamily="Montserrat" Padding="5,40,5,0"/>
+                <Label Content="AC" FontSize="60" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontFamily="Montserrat" Padding="5,40,5,0"/>
+                <Label Content="BC" FontSize="60" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontFamily="Montserrat" Padding="5,40,5,0"/>
+            <Label x:Name="Otvet"  FontSize="30" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="50, 20" Foreground="White"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Montserrat"/>
+            <TextBox x:Name="one_st" FontSize="50" Grid.Column="1" Margin="20" TextChanged="one_st_TextChanged" FontFamily="Montserrat" BorderBrush="White" BorderThickness="0,0,0,1" Background="Black" SelectionBrush="White" Foreground="White" Style="{DynamicResource TextBoxStyle1}" TextAlignment="Center"/>
+            <TextBox x:Name="two_st" FontSize="50" Grid.Column="1" Grid.Row="1" Margin="20" TextChanged="two_st_TextChanged" FontFamily="Montserrat" BorderBrush="White" BorderThickness="0,0,0,1" Background="Black" SelectionBrush="White" Foreground="White" Style="{DynamicResource TextBoxStyle1}" TextAlignment="Center"/>
+            <TextBox x:Name="three_st" FontSize="50" Grid.Column="1" Grid.Row="2" Margin="20" TextChanged="three_st_TextChanged" FontFamily="Montserrat" BorderThickness="0,0,0,1" BorderBrush="White" Background="Black" SelectionBrush="White" Foreground="White" Style="{DynamicResource TextBoxStyle1}" TextAlignment="Center"/>
+        </Grid>
+    </Grid>
+    </Border>
+</Window>
